@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Viagemm {
+public class CriarViagem extends ViagemPronta {
 
 	public static class Viagem {
 		private String nome;
@@ -20,11 +20,6 @@ public class Viagemm {
 		private boolean internacional;
 		private boolean viagemConfirmada;
 		private String formaPagamento;
-
-		public Viagem() {
-			atividades = new ArrayList<>();
-			viagemConfirmada = false;
-		}
 
 		public String getNome() {
 			return nome;
@@ -126,30 +121,7 @@ public class Viagemm {
 			this.formaPagamento = formaPagamento;
 		}
 
-		public void adicionarAtividade(String atividade) {
-			atividades.add(atividade);
-		}
-
-		public void alterarAtividade(int indice, String novaAtividade) {
-			if (indice >= 0 && indice < atividades.size()) {
-				atividades.set(indice, novaAtividade);
-			} else {
-				System.out.println("opção invalida");
-			}
-		}
-
-		public void excluirAtividade(int indice) {
-			if (indice >= 0 && indice < atividades.size()) {
-				atividades.remove(indice);
-			} else {
-				System.out.println("opção invalida");
-			}
-		}
-
-		public void adicionarDestino(String novoDestino) {
-			this.destino = novoDestino;
-		}
-
+		
 		public void mostrarInformacoesViagem() {
 			System.out.println("Nome: " + nome);
 			System.out.println("Data de Nascimento: " + dataNascimento);
@@ -211,60 +183,6 @@ public class Viagemm {
 			} else {
 				System.out.println("A viagem já está confirmada.");
 			}
-		}
-	}
-
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-
-		System.out.println("BEM VINDO AO TRAVELPLAN");
-
-		Viagem viagem = new Viagem();
-
-		System.out.print("Informe o nome: ");
-		viagem.setNome(scan.nextLine());
-
-		System.out.print("Informe a data de nascimento: ");
-		viagem.setDataNascimento(scan.nextLine());
-
-		System.out.print("Informe o CPF: ");
-		viagem.setCpf(scan.nextLine());
-
-		System.out.print("Informe a data da viagem: ");
-		viagem.setDataViagem(scan.nextLine());
-
-		System.out.print("Informe a origem: ");
-		viagem.setOrigem(scan.nextLine());
-
-		System.out.print("Informe o destino: ");
-		viagem.setDestino(scan.nextLine());
-
-		System.out.print("Informe a acomodação: ");
-		viagem.setAcomodacao(scan.nextLine());
-
-		System.out.print("Informe o valor da acomodação: ");
-		viagem.setValorAcomodacao(scan.nextDouble());
-
-		System.out.print("A viagem é internacional? (Sim/Não): ");
-		String resposta = scan.nextLine();
-		viagem.setInternacional(resposta.equalsIgnoreCase("Sim"));
-
-		while (true) {
-			System.out.println("\nMENU:");
-			System.out.println("1. Adicionar Atividade");
-			System.out.println("2. Alterar Atividade");
-			System.out.println("3. Excluir Atividade");
-			System.out.println("4. Adicionar Destino");
-			System.out.println("5. Adicionar Acomodação");
-			System.out.println("6. Mostrar Informações da Viagem");
-			System.out.println("7. Selecionar Forma de Pagamento");
-			System.out.println("8. Confirmar Viagem");
-			System.out.println("9. Sair");
-			// tem que fazer o switch ainda e os case , esse brak aqui coloquei so pra
-			// testar ,depois tem qwue tirar ele
-
-			break;
-
 		}
 	}
 }
