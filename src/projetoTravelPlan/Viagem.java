@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Viagem {
-
+	
 	private String dataViagem;
 	private String origem;
 	private String destino;
@@ -12,9 +12,9 @@ public class Viagem {
 	private double valorAcomodacao;
 	private List<String> atividades;
 	private String opcoesPag;
-	private boolean internacional;
 	private boolean viagemConfirmada;
 	private String formaPagamento;
+
 
 	public String getDataViagem() {
 		return dataViagem;
@@ -72,14 +72,6 @@ public class Viagem {
 		this.opcoesPag = opcoesPag;
 	}
 
-	public boolean isInternacional() {
-		return internacional;
-	}
-
-	public void setInternacional(boolean internacional) {
-		this.internacional = internacional;
-	}
-
 	public boolean isViagemConfirmada() {
 		return viagemConfirmada;
 	}
@@ -93,9 +85,9 @@ public class Viagem {
 	}
 
 	public void mostrarInformacoesViagem() {
-//		System.out.println("Nome: " + nome);
-//		System.out.println("Data de Nascimento: " + dataNascimento);
-//		System.out.println("CPF: " + cpf);
+		System.out.println("Nome: " + nome);
+		System.out.println("Data de Nascimento: " + dataNascimento);
+		System.out.println("CPF: " + cpf);
 		System.out.println("Data da Viagem: " + dataViagem);
 		System.out.println("Origem: " + origem);
 		System.out.println("Destino: " + destino);
