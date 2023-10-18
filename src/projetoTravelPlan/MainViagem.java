@@ -2,7 +2,6 @@ package projetoTravelPlan;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class MainViagem {
@@ -10,12 +9,13 @@ public class MainViagem {
 	private static ArrayList<Viagem> viagens = new ArrayList<>();
 
 	public static void main(String[] args) {
-		List<String> atividades = new ArrayList<>();
+		ArrayList<String> atividades = new ArrayList<>();
 
 		// viagemConfirmada = false;
 
 		Scanner scan = new Scanner(System.in);
-		int op = -1;
+		int op = Integer.MAX_VALUE;
+		int op2 = Integer.MAX_VALUE;
 
 		while (op != 0) {
 			System.out.println("BEM VINDO AO TRAVELPLAN");
@@ -57,24 +57,29 @@ public class MainViagem {
 				viagem.setAcomodacao(scan.nextLine());
 
 				System.out.print("Informe o valor da acomodação: ");
-				viagem.setValorAcomodacao(scan.nextDouble());
+				viagem.setValorAcomodacao(Float.valueOf(scan.nextLine()));
 
 				passageiro.setViagem(viagem);
 
-				op = -1;
-				while (true) {
+				op2 = -1;
+
+				while (op2 != 0) {
 					System.out.println("\nMENU:");
 					System.out.println("1. Adicionar Atividade");
 					System.out.println("2. Alterar Atividade");
 					System.out.println("3. Excluir Atividade");
 					System.out.println("0. Sair");
-					op = Integer.valueOf(scan.nextLine());
+					op2 = Integer.valueOf(scan.nextLine());
 
-					switch (op) {
+					switch (op2) {
+					case(0):
+						System.out.println("Area de pagamento ");
+					break;
 					case (1): // adicionar atividade
 						System.out.println("Digite a nova atividade:");
 						String novaAtividade = scan.nextLine();
 						adicionarAtividade(novaAtividade, atividades);
+						System.out.println("Adicionado com sucesso");
 						break;
 
 					case (2): // alterar atividade
@@ -85,6 +90,7 @@ public class MainViagem {
 							System.out.println("Digite a nova atividade:");
 							novaAtividade = scan.nextLine();
 							alterarAtividade(indice, novaAtividade, atividades);
+							System.out.println("alterado com sucesso");
 						} else {
 							System.out.println("Opção inválida");
 						}
@@ -97,6 +103,7 @@ public class MainViagem {
 							excluirAtividade(indice, atividades);
 						} else {
 							System.out.println("Opção inválida");
+							System.out.println("Deletado com sucesso");
 						}
 						break;
 
@@ -104,7 +111,13 @@ public class MainViagem {
 						System.out.println("Opção inválida.");
 						break;
 					}
+
+				
 				}
+				mostrarInformacoesViagem(passageiro, viagem, atividades);
+				selecionarFormaPagamento(viagem);
+				confirmarViagem(viagem);
+
 			case (2): // VIAGEM PRONTA
 				op = -1;
 				while (op != 0) {
@@ -142,7 +155,7 @@ public class MainViagem {
 		v1.setValorAcomodacao(659.99);
 		LocalDate data1Ida1 = LocalDate.of(2023, 2, 10);
 		LocalDate dataVolta1 = LocalDate.of(2023, 2, 18);
-		
+
 		ArrayList<String> atividades1 = new ArrayList<>();
 		atividades1.add("Praias paradisíacas");
 		atividades1.add("Trilhas na mata");
@@ -156,32 +169,32 @@ public class MainViagem {
 		v2.setValorAcomodacao(659.99);
 		LocalDate data1Ida2 = LocalDate.of(2023, 2, 10);
 		LocalDate dataVolta2 = LocalDate.of(2023, 2, 18);
-		
+
 		ArrayList<String> atividades = new ArrayList<>();
 		atividades.add("Praias paradisíacas");
 		atividades.add("Trilhas na mata");
 		atividades.add("Festas locais");
 		v2.setAtividades(atividades);
-		
+
 		Viagem v3 = new Viagem();
 
 	}
 
 	private static void viagemNacional() {
 
-		Viagem v = new Viagem();
-		v.setDataViagem(null);
-		v.setAcomodacao(null);
-		viagens.add(v);
+		Viagem v = new Viagem();//
+		v.setDataViagem(null);// h
+		v.setAcomodacao(null);// h
+		viagens.add(v);// h
 
 	}
 
-	public static void adicionarAtividade(String atividade, List<String> atividades) {
+	public static void adicionarAtividade(String atividade, ArrayList<String> atividades) {
 		atividades.add(atividade);
 		System.out.println("Atividade ADICIONADA com sucesso!");
 	}
 
-	public static void alterarAtividade(int indice, String novaAtividade, List<String> atividades) {
+	public static void alterarAtividade(int indice, String novaAtividade, ArrayList<String> atividades) {
 		if (indice >= 0 && indice < atividades.size()) {
 			atividades.set(indice, novaAtividade);
 			System.out.println("Atividade ALTERADA com sucesso!");
@@ -190,7 +203,7 @@ public class MainViagem {
 		}
 	}
 
-	public static void excluirAtividade(int indice, List<String> atividades) {
+	public static void excluirAtividade(int indice, ArrayList<String> atividades) {
 		if (indice >= 0 && indice < atividades.size()) {
 			atividades.remove(indice);
 			System.out.println("Atividade EXCLUIDA com sucesso!");
@@ -199,7 +212,64 @@ public class MainViagem {
 		}
 	}
 
-	LocalDate dataAleatoria = LocalDate.of(2023, 10, 01);
+	public static void mostrarInformacoesViagem(Passageiro passageiro, Viagem viagem, ArrayList<String> atividades) {
+		System.out.println("Nome: " + passageiro.getNome());
+		System.out.println("Data de Nascimento: " + passageiro.getDataNascimento());
+		System.out.println("CPF: " + passageiro.getCpf());
+		System.out.println("Data da Viagem: " + viagem.getDataViagem());
+		System.out.println("Origem: " + viagem.getOrigem());
+		System.out.println("Destino: " + viagem.getDestino());
+		System.out.println("Acomodações: " + viagem.getAcomodacao());
+		System.out.println("Valor da Acomodação: " + viagem.getValorAcomodacao());
+		System.out.println("Atividades:");
+		for (String atividade : atividades) {
+			System.out.println("- " + atividade);
+		}
+		System.out.println("Internacional");// tem que arrumar aqui por causa do internacional
+		System.out.println("Opções de Pagamento: " + viagem.getOpcoesPag());
+
+	}
+
+	public static void selecionarFormaPagamento(Viagem viagem) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Selecione a forma de pagamento:");
+		System.out.println("1. Boleto");
+		System.out.println("2. Cartão de Crédito");
+		System.out.println("3. PIX");
+		int opcao = Integer.valueOf(scan.nextLine());
+		System.out.println();
+
+		switch (opcao) {
+		case 1:
+			viagem.setOpcoesPag("Boleto");
+			break;
+		case 2:
+			viagem.setOpcoesPag("Cartão de Crédito");
+			break;
+		case 3:
+			viagem.setOpcoesPag("PIX");
+			break;
+		default:
+			System.out.println("Opção de pagamento inválida.");// opção que a professora pediu la da opção invalida
+			break;
+		}
+	}
+
+	public static void confirmarViagem(Viagem viagem) {
+
+		System.out.println("Confirmação de Viagem:");
+		System.out.print("Deseja confirmar a viagem? (Sim/Não): ");
+		Scanner scan = new Scanner(System.in);
+		String resposta = scan.nextLine();
+
+		if (resposta.equalsIgnoreCase("Sim")) {
+			viagem.setViagemConfirmada(true);
+			System.out.println("Viagem confirmada com sucesso!");
+		} else {
+			System.out.println("Viagem não confirmada.");
+		}
+
+	}
 
 	public ArrayList<String> atracoesJaneiroAbril = new ArrayList<>();
 	{
