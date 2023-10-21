@@ -1,22 +1,60 @@
 package projetoTravelPlan;
 
+import java.time.LocalDate;
 import java.util.List;
 public class Viagem {
 
+	private Integer i;
 	private String dataViagem;
 	private String origem;
 	private String destino;
 	private String acomodacao;
 	private Float valorAcomodacao;
+	private Float total;
+	private LocalDate dataIda;
+	private LocalDate dataVolta;
 	private List<String> atividades;
 	private String opcoesPag;
 	private boolean viagemConfirmada;
 	private boolean Internacional;
 
+	public Integer getI() {
+		return i;
+	}
 
-	
 
+	public void setI(Integer i) {
+		this.i = i;
+	}
 	
+	public LocalDate getDataIda() {
+		return dataIda;
+	}
+
+
+	public void setDataIda(LocalDate dataIda) {
+		this.dataIda = dataIda;
+	}
+
+
+	public LocalDate getDataVolta() {
+		return dataVolta;
+	}
+
+
+	public void setDataVolta(LocalDate dataVolta) {
+		this.dataVolta = dataVolta;
+	}
+	
+	public double getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(double total) {
+		this.total = (float) total;
+	}
+
 	public void setInternacional(boolean internacional) {
 		Internacional = internacional;
 	}
@@ -63,7 +101,7 @@ public class Viagem {
 	}
 
 	public void setValorAcomodacao(double valorAcomodacao) {
-		this.valorAcomodacao = valorAcomodacao;
+		this.valorAcomodacao = (float) valorAcomodacao;
 	}
 
 	public List<String> getAtividades() {
