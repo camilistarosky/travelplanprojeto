@@ -26,6 +26,9 @@ public class MainViagem {
 			op = Integer.valueOf(scan.nextLine());
 
 			switch (op) {
+			case (0):
+				System.out.println("Você saiu do programa!!");
+				break;
 			case (1): // CRIAR VIAGEM
 
 				System.out.print("Informe o nome: ");
@@ -76,7 +79,7 @@ public class MainViagem {
 						System.out.println("Digite a nova atividade:");
 						String novaAtividade = scan.nextLine();
 						adicionarAtividade(novaAtividade, atividades);
-						System.out.println("Adicionado com sucesso");
+						System.out.println(novaAtividade + " Adicionado com sucesso");
 						break;
 
 					case (2): // alterar atividade
@@ -94,14 +97,14 @@ public class MainViagem {
 						break;
 
 					case (3): // excluir atividade
-						System.out.println("Digite o índice da atividade a ser excluída:");
-						indice = Integer.valueOf(scan.nextLine());
-						if (indice >= 0 && indice < atividades.size()) {
-							excluirAtividade(indice, atividades);
-						} else {
-							System.out.println("Opção inválida");
-							System.out.println("Deletado com sucesso");
-						}
+						 System.out.println("Digite o índice da atividade a ser excluída:");
+                    indice = Integer.valueOf(scan.nextLine());
+                    if (indice >= 0 && indice < atividades.size()) {
+                        excluirAtividade(indice, atividades);
+                    } else {
+                        System.out.println("Opção inválida");
+                        System.out.println("Deletado com sucesso");
+                    }
 						break;
 
 					default:
@@ -217,7 +220,7 @@ public class MainViagem {
 		vi3.setAcomodacao("Pousada");
 		vi3.setValorAcomodacao(893.21);
 		LocalDate dataIdai3 = LocalDate.of(2023, 12, 25);
-		vi3.setDataIda(dataIdai2);
+		vi3.setDataIda(dataIdai3);
 		LocalDate dataVoltai3 = LocalDate.of(2024, 1, 2);
 		vi3.setDataVolta(dataVoltai3);
 
@@ -272,7 +275,7 @@ public class MainViagem {
 		viagemInternacional.add(vi5);
 
 		for (Viagem vi : viagemInternacional) {
-			System.out.println("OPÇÃO: " +vi.getI());
+			System.out.println("OPÇÃO: " + vi.getI());
 			System.out.println("Origem: " + vi.getOrigem());
 			System.out.println("Destino: " + vi.getDestino());
 			System.out.println("Acomodação: " + vi.getAcomodacao());
@@ -290,7 +293,7 @@ public class MainViagem {
 		System.out.println("RESUMO DA VIAGEM: ");
 		switch (op) {
 		case (1):
-			System.out.println("OPÇÃO: " +vi1.getI());
+			System.out.println("OPÇÃO: " + vi1.getI());
 			System.out.println("Origem: " + vi1.getOrigem());
 			System.out.println("Destino: " + vi1.getDestino());
 			System.out.println("Acomodação: " + vi1.getAcomodacao());
@@ -303,7 +306,7 @@ public class MainViagem {
 			break;
 
 		case (2):
-			System.out.println("OPÇÃO: " +vi2.getI());
+			System.out.println("OPÇÃO: " + vi2.getI());
 			System.out.println("Origem: " + vi2.getOrigem());
 			System.out.println("Destino: " + vi2.getDestino());
 			System.out.println("Acomodação: " + vi2.getAcomodacao());
@@ -316,7 +319,7 @@ public class MainViagem {
 			break;
 
 		case (3):
-			System.out.println("OPÇÃO: " +vi3.getI());
+			System.out.println("OPÇÃO: " + vi3.getI());
 			System.out.println("Origem: " + vi3.getOrigem());
 			System.out.println("Destino: " + vi3.getDestino());
 			System.out.println("Acomodação: " + vi3.getAcomodacao());
@@ -329,7 +332,7 @@ public class MainViagem {
 			break;
 
 		case (4):
-			System.out.println("OPÇÃO: " +vi4.getI());
+			System.out.println("OPÇÃO: " + vi4.getI());
 			System.out.println("Origem: " + vi4.getOrigem());
 			System.out.println("Destino: " + vi4.getDestino());
 			System.out.println("Acomodação: " + vi4.getAcomodacao());
@@ -342,7 +345,7 @@ public class MainViagem {
 			break;
 
 		case (5):
-			System.out.println("OPÇÃO: " +vi5.getI());
+			System.out.println("OPÇÃO: " + vi5.getI());
 			System.out.println("Origem: " + vi5.getOrigem());
 			System.out.println("Destino: " + vi5.getDestino());
 			System.out.println("Acomodação: " + vi5.getAcomodacao());
@@ -361,7 +364,7 @@ public class MainViagem {
 	}
 
 	private static void viagemNacional() {
-		Scanner scan = new Scanner (System.in);
+		Scanner scan = new Scanner(System.in);
 		ArrayList<Viagem> viagemNacional = new ArrayList<>();
 
 		// viagem nacional 1
@@ -387,7 +390,7 @@ public class MainViagem {
 
 		// viagem nacional 2
 		Viagem vn2 = new Viagem();
-		vn1.setI(2);
+		vn2.setI(2);
 		vn2.setOrigem("Navegantes");
 		vn2.setDestino("Rio de Janeiro");
 		vn2.setAcomodacao("Hotel");
@@ -408,7 +411,7 @@ public class MainViagem {
 
 		// viagem nacional 3
 		Viagem vn3 = new Viagem();
-		vn1.setI(3);
+		vn3.setI(3);
 		vn3.setOrigem("Navegantes");
 		vn3.setDestino("Belo Horizonte");
 		vn3.setAcomodacao("Risort");
@@ -428,7 +431,7 @@ public class MainViagem {
 
 		// viagem nacional 4
 		Viagem vn4 = new Viagem();
-		vn1.setI(4);
+		vn4.setI(4);
 		vn4.setOrigem("Navegantes");
 		vn4.setDestino("Gramado");
 		vn4.setAcomodacao("Pousada");
@@ -449,7 +452,7 @@ public class MainViagem {
 
 		// viagem nacional 5
 		Viagem vn5 = new Viagem();
-		vn1.setI(5);
+		vn5.setI(5);
 		vn5.setOrigem("Navegantes");
 		vn5.setDestino("Curitiba");
 		vn5.setAcomodacao("Hotel");
@@ -480,14 +483,14 @@ public class MainViagem {
 			System.out.println("Valor total da viagem: " + vn.getTotal());
 			System.out.println("");
 		}
-		
+
 		System.out.println("Escolha uma opção: ");
 		int op = Integer.valueOf(scan.nextLine());
 
 		System.out.println("RESUMO DA VIAGEM: ");
 		switch (op) {
 		case (1):
-			System.out.println("OPÇÃO: " +vn1.getI());
+			System.out.println("OPÇÃO: " + vn1.getI());
 			System.out.println("Origem: " + vn1.getOrigem());
 			System.out.println("Destino: " + vn1.getDestino());
 			System.out.println("Acomodação: " + vn1.getAcomodacao());
@@ -500,7 +503,7 @@ public class MainViagem {
 			break;
 
 		case (2):
-			System.out.println("OPÇÃO: " +vn2.getI());
+			System.out.println("OPÇÃO: " + vn2.getI());
 			System.out.println("Origem: " + vn2.getOrigem());
 			System.out.println("Destino: " + vn2.getDestino());
 			System.out.println("Acomodação: " + vn2.getAcomodacao());
@@ -513,7 +516,7 @@ public class MainViagem {
 			break;
 
 		case (3):
-			System.out.println("OPÇÃO: " +vn3.getI());
+			System.out.println("OPÇÃO: " + vn3.getI());
 			System.out.println("Origem: " + vn3.getOrigem());
 			System.out.println("Destino: " + vn3.getDestino());
 			System.out.println("Acomodação: " + vn3.getAcomodacao());
@@ -526,7 +529,7 @@ public class MainViagem {
 			break;
 
 		case (4):
-			System.out.println("OPÇÃO: " +vn4.getI());
+			System.out.println("OPÇÃO: " + vn4.getI());
 			System.out.println("Origem: " + vn4.getOrigem());
 			System.out.println("Destino: " + vn4.getDestino());
 			System.out.println("Acomodação: " + vn4.getAcomodacao());
@@ -539,7 +542,7 @@ public class MainViagem {
 			break;
 
 		case (5):
-			System.out.println("OPÇÃO: " +vn5.getI());
+			System.out.println("OPÇÃO: " + vn5.getI());
 			System.out.println("Origem: " + vn5.getOrigem());
 			System.out.println("Destino: " + vn5.getDestino());
 			System.out.println("Acomodação: " + vn5.getAcomodacao());
@@ -554,7 +557,6 @@ public class MainViagem {
 			System.out.println("Opção inválida");
 			break;
 		}
-
 
 	}
 
@@ -594,7 +596,12 @@ public class MainViagem {
 		for (String atividade : atividades) {
 			System.out.println("- " + atividade);
 		}
-		System.out.println("Internacional");// tem que arrumar aqui por causa do internacional
+		System.out.print("Internacional: ");
+		if (viagem.isInternacional()) {
+			System.out.println("sim");
+		} else {
+			System.out.println("não");
+		}
 		System.out.println("Opções de Pagamento: " + viagem.getOpcoesPag());
 
 	}

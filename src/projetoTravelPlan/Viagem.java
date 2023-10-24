@@ -76,6 +76,21 @@ public class Viagem {
 		return origem;
 	}
 
+	public boolean isInternacional() {
+		return Internacional;
+	}
+
+
+	public void setValorAcomodacao(Float valorAcomodacao) {
+		this.valorAcomodacao = valorAcomodacao;
+	}
+
+
+	public void setTotal(Float total) {
+		this.total = total;
+	}
+
+
 	public void setOrigem(String origem) {
 		this.origem = origem;
 	}
