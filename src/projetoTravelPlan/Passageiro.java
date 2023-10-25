@@ -1,9 +1,11 @@
 package projetoTravelPlan;
 
+import java.time.LocalDate;
+
 public class Passageiro {
 
 	private String nome;
-	private String dataNascimento;
+	private LocalDate dataNascimento;
 	private String cpf;
 	private Viagem viagem;
 
@@ -15,11 +17,11 @@ public class Passageiro {
 		this.nome = nome;
 	}
 
-	public String getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 

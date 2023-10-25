@@ -34,8 +34,15 @@ public class MainViagem {
 				System.out.print("Informe o nome: ");
 				passageiro.setNome(scan.nextLine());
 
-				System.out.print("Informe a data de nascimento: ");
-				passageiro.setDataNascimento(scan.nextLine());
+				System.out.println("Digite o dia de Nascimento: ");
+				String dia = scan.nextLine();
+				System.out.println("Digite o mes de Nascimento: ");
+				String mes = scan.nextLine();
+				System.out.println("Digite o ano de Nascimento: ");
+				String ano = scan.nextLine();
+
+				passageiro.setDataNascimento(
+						LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia)));
 
 				System.out.print("Informe o CPF: ");
 				passageiro.setCpf(scan.nextLine());
@@ -97,14 +104,14 @@ public class MainViagem {
 						break;
 
 					case (3): // excluir atividade
-						 System.out.println("Digite o índice da atividade a ser excluída:");
-                    indice = Integer.valueOf(scan.nextLine());
-                    if (indice >= 0 && indice < atividades.size()) {
-                        excluirAtividade(indice, atividades);
-                    } else {
-                        System.out.println("Opção inválida");
-                        System.out.println("Deletado com sucesso");
-                    }
+						System.out.println("Digite o índice da atividade a ser excluída:");
+						indice = Integer.valueOf(scan.nextLine());
+						if (indice >= 0 && indice < atividades.size()) {
+							excluirAtividade(indice, atividades);
+						} else {
+							System.out.println("Opção inválida");
+							System.out.println("Deletado com sucesso");
+						}
 						break;
 
 					default:
@@ -135,8 +142,15 @@ public class MainViagem {
 						System.out.println("Digite seus dados: ");
 						System.out.println("Nome: ");
 						passageiro.setNome(scan.nextLine());
-						System.out.println("Data de Nascimento: ");
-						passageiro.setDataNascimento(scan.nextLine());
+						System.out.println("Digite o dia de Nascimento: ");
+						String dian = scan.nextLine();
+						System.out.println("Digite o mes de Nascimento: ");
+						String mesn = scan.nextLine();
+						System.out.println("Digite o ano de Nascimento: ");
+						String anon = scan.nextLine();
+
+						passageiro.setDataNascimento(
+								LocalDate.of(Integer.valueOf(anon), Integer.valueOf(mesn), Integer.valueOf(dian)));
 						System.out.println("CPF: ");
 						passageiro.setCpf(scan.nextLine());
 
@@ -152,8 +166,17 @@ public class MainViagem {
 						System.out.println("Digite seus dados: ");
 						System.out.println("Nome: ");
 						passageiro.setNome(scan.nextLine());
-						System.out.println("Data de Nascimento: ");
-						passageiro.setDataNascimento(scan.nextLine());
+
+						System.out.println("Digite o dia de Nascimento: ");
+						String diai = scan.nextLine();
+						System.out.println("Digite o mes de Nascimento: ");
+						String mesi = scan.nextLine();
+						System.out.println("Digite o ano de Nascimento: ");
+						String anoi = scan.nextLine();
+
+						passageiro.setDataNascimento(
+								LocalDate.of(Integer.valueOf(anoi), Integer.valueOf(mesi), Integer.valueOf(diai)));
+
 						System.out.println("CPF: ");
 						passageiro.setCpf(scan.nextLine());
 
