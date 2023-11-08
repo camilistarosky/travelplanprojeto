@@ -1,15 +1,16 @@
-package projetoTravelPlan;
+package visao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import controle.ViagemDAO;
+import modelo.Passageiro;
+import modelo.Viagem;
+
 public class MainViagem {
 
-	private static ArrayList<Viagem> viagens = new ArrayList<>();
-
 	public static void main(String[] args) {
-		ArrayList<String> atividades = new ArrayList<>();
 
 		Passageiro passageiro = new Passageiro();
 		Viagem viagem = new Viagem();
@@ -67,6 +68,9 @@ public class MainViagem {
 				viagem.setValorAcomodacao(Float.valueOf(scan.nextLine()));
 
 				passageiro.setViagem(viagem);
+
+				ViagemDAO dao = new ViagemDAO();
+				dao.inserirViagem(viagem);
 
 				op2 = -1;
 
@@ -581,29 +585,6 @@ public class MainViagem {
 			break;
 		}
 
-	}
-
-	public static void adicionarAtividade(String atividade, ArrayList<String> atividades) {
-		atividades.add(atividade);
-		System.out.println("Atividade ADICIONADA com sucesso!");
-	}
-
-	public static void alterarAtividade(int indice, String novaAtividade, ArrayList<String> atividades) {
-		if (indice >= 0 && indice < atividades.size()) {
-			atividades.set(indice, novaAtividade);
-			System.out.println("Atividade ALTERADA com sucesso!");
-		} else {
-			System.out.println("opção invalida");
-		}
-	}
-
-	public static void excluirAtividade(int indice, ArrayList<String> atividades) {
-		if (indice >= 0 && indice < atividades.size()) {
-			atividades.remove(indice);
-			System.out.println("Atividade EXCLUIDA com sucesso!");
-		} else {
-			System.out.println("opção invalida");
-		}
 	}
 
 	public static void mostrarInformacoesViagem(Passageiro passageiro, Viagem viagem, ArrayList<String> atividades) {
