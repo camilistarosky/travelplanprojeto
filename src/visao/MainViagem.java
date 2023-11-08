@@ -69,8 +69,8 @@ public class MainViagem {
 
 				passageiro.setViagem(viagem);
 
-				ViagemDAO dao = new ViagemDAO();
-				dao.inserirViagem(viagem);
+				ViagemDAO dao = ViagemDAO.getInstancia();
+				dao.inserir(viagem);
 
 				op2 = -1;
 
@@ -88,16 +88,21 @@ public class MainViagem {
 						break;
 					case (1): // adicionar atividade
 						System.out.println("Digite a nova atividade:");
+
+						dao = ViagemDAO.getInstancia();
+
 						String novaAtividade = scan.nextLine();
-						adicionarAtividade(novaAtividade, atividades);
+						dao.inserirAtividade(viagem, novaAtividade);
+						
 						System.out.println(novaAtividade + " Adicionado com sucesso");
 						break;
 
 					case (2): // alterar atividade
 						System.out.println("Digite o índice da atividade a ser alterada:");
-						int indice = Integer.valueOf(scan.nextLine());
+						viagem.setI(Integer.valueOf(scan.nextLine()));
 
-						if (indice >= 0 && indice < atividades.size()) {
+
+						if (viagem.setI() >= 0 && indice < atividades.size()) {
 							System.out.println("Digite a nova atividade:");
 							novaAtividade = scan.nextLine();
 							alterarAtividade(indice, novaAtividade, atividades);

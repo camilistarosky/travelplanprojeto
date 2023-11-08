@@ -1,12 +1,12 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Viagem {
 	
-	
-	private Long id;
+
 	private Integer i;
 	private String dataViagem;
 	private String origem;
@@ -16,7 +16,7 @@ public class Viagem {
 	private Float total;
 	private LocalDate dataIda;
 	private LocalDate dataVolta;
-	private List<String> atividades;
+	private ArrayList<String> atividades;
 	private String opcoesPag;
 	private boolean viagemConfirmada;
 	private boolean Internacional;
@@ -27,6 +27,7 @@ public class Viagem {
 
 	public void setI(Integer i) {
 		this.i = i;
+	
 	}
 
 	public LocalDate getDataIda() {
@@ -113,11 +114,11 @@ public class Viagem {
 		this.valorAcomodacao = (float) valorAcomodacao;
 	}
 
-	public List<String> getAtividades() {
+	public ArrayList<String> getAtividades() {
 		return atividades;
 	}
 
-	public void setAtividades(List<String> atividades) {
+	public void setAtividades(ArrayList<String> atividades) {
 		this.atividades = atividades;
 	}
 

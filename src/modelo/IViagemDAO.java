@@ -3,20 +3,19 @@ package modelo;
 import java.util.ArrayList;
 
 public interface IViagemDAO {
-	public boolean inserirViagem(Viagem viagem);
 
-	public boolean excluirViagem(Viagem viagem);
+	public boolean inserir(Viagem viagem);
 
-	public boolean alterarViagem(Viagem viagem);
+	public boolean excluir(int id);
 
-	public ArrayList<Viagem> listarViagens();
+	public boolean alterar(Viagem viagem, int id);
 
-	public boolean inserirAtividade(Viagem viagem);
+	public ArrayList<Viagem> listar();
 
-	public boolean excluirAtividade(Viagem viagem);
+	public boolean inserirAtividade(Viagem v, String atividade);
 
-	public boolean alterarAtividade(Viagem v);
+	public boolean excluirAtividade(Viagem v, int i);
 
-	public ArrayList<Viagem> listarAtividades();
+	public boolean alterar(Viagem v, String atividade, int i);
 
 }
