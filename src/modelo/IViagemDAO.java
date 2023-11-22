@@ -16,6 +16,6 @@ public interface IViagemDAO {
 
 	public boolean excluirAtividade(Viagem v, int i);
 
-	public boolean alterar(Viagem v, String atividade, int i);
+	public boolean alterarAtividade(Viagem v, String atividade, int i);
 
 }

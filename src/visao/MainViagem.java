@@ -43,7 +43,7 @@ public class MainViagem {
 				String ano = scan.nextLine();
 
 				passageiro.setDataNascimento(
-						LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia)));
+				LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia)));
 
 				System.out.print("Informe o CPF: ");
 				passageiro.setCpf(scan.nextLine());
@@ -83,29 +83,30 @@ public class MainViagem {
 					op2 = Integer.valueOf(scan.nextLine());
 
 					switch (op2) {
+					
 					case (0):
 						System.out.println("Area de pagamento ");
 						break;
 					case (1): // adicionar atividade
+						int indice = Integer.valueOf(scan.nextLine());
 						System.out.println("Digite a nova atividade:");
 
 						dao = ViagemDAO.getInstancia();
 
-						String novaAtividade = scan.nextLine();
-						dao.inserirAtividade(viagem, novaAtividade);
+						String novaViagem = scan.nextLine();
+						dao.inserir(viagem, novaViagem);
 						
-						System.out.println(novaAtividade + " Adicionado com sucesso");
+						System.out.println(novaViagem + " Adicionado com sucesso");
 						break;
 
 					case (2): // alterar atividade
 						System.out.println("Digite o índice da atividade a ser alterada:");
 						viagem.setI(Integer.valueOf(scan.nextLine()));
 
-
-						if (viagem.setI() >= 0 && indice < atividades.size()) {
+						if (viagem.getI() >= 0 && indice < dao.listar()) {
 							System.out.println("Digite a nova atividade:");
-							novaAtividade = scan.nextLine();
-							alterarAtividade(indice, novaAtividade, atividades);
+							novaViagem = scan.nextLine();
+							alterarAtividade(indice, novaViagem, atividades);
 							System.out.println("alterado com sucesso");
 						} else {
 							System.out.println("Opção inválida");

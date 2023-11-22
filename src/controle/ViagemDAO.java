@@ -87,7 +87,7 @@ public class ViagemDAO implements IViagemDAO {
 	}
 
 	@Override
-	public boolean alterar(Viagem v, String atividade, int i) {
+	public boolean alterarAtividade(Viagem v, String atividade, int i) {
 		// TODO Auto-generated method stub
 		return false;
 	}
