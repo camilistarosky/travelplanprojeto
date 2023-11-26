@@ -43,7 +43,7 @@ public class MainViagem {
 				String ano = scan.nextLine();
 
 				passageiro.setDataNascimento(
-				LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia)));
+						LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia)));
 
 				System.out.print("Informe o CPF: ");
 				passageiro.setCpf(scan.nextLine());
@@ -83,30 +83,24 @@ public class MainViagem {
 					op2 = Integer.valueOf(scan.nextLine());
 
 					switch (op2) {
-					
+
 					case (0):
 						System.out.println("Area de pagamento ");
 						break;
 					case (1): // adicionar atividade
-						int indice = Integer.valueOf(scan.nextLine());
 						System.out.println("Digite a nova atividade:");
-
-						dao = ViagemDAO.getInstancia();
-
-						String novaViagem = scan.nextLine();
-						dao.inserir(viagem, novaViagem);
-						
-						System.out.println(novaViagem + " Adicionado com sucesso");
+						String novaAtividade = scan.nextLine();
+						dao.inserirAtividade(viagem, novaAtividade);
+						System.out.println(novaAtividade + " Adicionado com sucesso");
 						break;
 
 					case (2): // alterar atividade
 						System.out.println("Digite o índice da atividade a ser alterada:");
-						viagem.setI(Integer.valueOf(scan.nextLine()));
-
-						if (viagem.getI() >= 0 && indice < dao.listar()) {
+						int indice = Integer.valueOf(scan.nextLine());
+						if (indice >= 0 && indice < dao.listarAtividades().size()) {
 							System.out.println("Digite a nova atividade:");
-							novaViagem = scan.nextLine();
-							alterarAtividade(indice, novaViagem, atividades);
+							novaAtividade = scan.nextLine();
+							dao.alterarAtividade(viagem, indice, novaAtividade);
 							System.out.println("alterado com sucesso");
 						} else {
 							System.out.println("Opção inválida");
@@ -116,8 +110,8 @@ public class MainViagem {
 					case (3): // excluir atividade
 						System.out.println("Digite o índice da atividade a ser excluída:");
 						indice = Integer.valueOf(scan.nextLine());
-						if (indice >= 0 && indice < atividades.size()) {
-							excluirAtividade(indice, atividades);
+						if (indice >= 0 && indice < dao.listarAtividades().size()) {
+							dao.excluirAtividade(viagem, indice);
 						} else {
 							System.out.println("Opção inválida");
 							System.out.println("Deletado com sucesso");
@@ -130,7 +124,7 @@ public class MainViagem {
 					}
 
 				}
-				mostrarInformacoesViagem(passageiro, viagem, atividades);
+				mostrarInformacoesViagem(passageiro, viagem, dao.listarAtividades());
 				selecionarFormaPagamento(viagem);
 				confirmarViagem(viagem);
 
@@ -593,7 +587,7 @@ public class MainViagem {
 
 	}
 
-	public static void mostrarInformacoesViagem(Passageiro passageiro, Viagem viagem, ArrayList<String> atividades) {
+	public static void mostrarInformacoesViagem(Passageiro passageiro, Viagem viagem, ArrayList<String> tabelaAtividades) {
 		System.out.println("Nome: " + passageiro.getNome());
 		System.out.println("Data de Nascimento: " + passageiro.getDataNascimento());
 		System.out.println("CPF: " + passageiro.getCpf());
@@ -603,7 +597,7 @@ public class MainViagem {
 		System.out.println("Acomodações: " + viagem.getAcomodacao());
 		System.out.println("Valor da Acomodação: " + viagem.getValorAcomodacao());
 		System.out.println("Atividades:");
-		for (String atividade : atividades) {
+		for (String atividade : tabelaAtividades) {
 			System.out.println("- " + atividade);
 		}
 		System.out.print("Internacional: ");
