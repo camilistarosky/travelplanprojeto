@@ -7,8 +7,8 @@ import modelo.Viagem;
 
 public class ViagemDAO implements IViagemDAO {
 
-	private static ArrayList<Viagem> tabelaViagems;
-	private static ArrayList<String> tabelaAtividades;
+	private static ArrayList<Viagem> tabelaViagems = new ArrayList<>();
+	private static ArrayList<String> tabelaAtividades = new ArrayList<>();
 	private static ViagemDAO instancia;
 
 	private ViagemDAO() {
@@ -36,30 +36,27 @@ public class ViagemDAO implements IViagemDAO {
 
 	@Override
 	public boolean inserir(Viagem v) {
-		if (v != null) {
-			tabelaViagems.add(v);
-			return true;
-		}
-		return false;
+		return tabelaViagems.add(v);
 	}
 
 	@Override
-	public boolean alterar(Viagem v, int id) {
-		for (Viagem Viagem : tabelaViagems) {
-
-			if (Viagem.getI() == id) {
-				// falta colocar o resto dos sets
-				Viagem.setOrigem(v.getOrigem());
+	public boolean alterar(Viagem v) {
+		for (int i = 0; i < tabelaViagems.size(); i++) {
+			Viagem viagem = tabelaViagems.get(i);
+			
+			if (viagem.getI() == v.getI()) {
+				tabelaViagems.set(i, viagem);
 				return true;
 			}
 		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean excluir(int id) {
+	public boolean excluir(Viagem v) {
 		for (Viagem Viagem : tabelaViagems) {
-			if (Viagem.getI() == id) {
+			if (Viagem.getI() == v.getI()) {
 				tabelaViagems.remove(Viagem);
 				return true;
 			}

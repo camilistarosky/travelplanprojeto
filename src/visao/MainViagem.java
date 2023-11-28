@@ -14,7 +14,7 @@ public class MainViagem {
 
 		Passageiro passageiro = new Passageiro();
 		Viagem viagem = new Viagem();
-
+		
 		Scanner scan = new Scanner(System.in);
 		int op = Integer.MAX_VALUE;
 		int op2 = Integer.MAX_VALUE;
@@ -22,7 +22,10 @@ public class MainViagem {
 		while (op != 0) {
 			System.out.println("BEM VINDO AO TRAVELPLAN");
 			System.out.println("1 - Criar Viagem");
-			System.out.println("2 - Viagem Pronta");
+			System.out.println("2 - Alterar Viagem");
+			System.out.println("3 - Excluir Viagem");
+			System.out.println("4 - Listar Viagens");
+			System.out.println("5 - Viagem Pronta");
 			System.out.println("0 - Sair do Programa");
 			op = Integer.valueOf(scan.nextLine());
 
@@ -70,11 +73,15 @@ public class MainViagem {
 				passageiro.setViagem(viagem);
 
 				ViagemDAO dao = ViagemDAO.getInstancia();
+				ArrayList<Viagem> listaviagens = dao.listar();
 				dao.inserir(viagem);
 
 				op2 = -1;
 
 				while (op2 != 0) {
+					ViagemDAO daoAtt = ViagemDAO.getInstanciaA();
+					ArrayList<String> listaatividades = daoAtt.listarAtividades();
+					
 					System.out.println("\nMENU:");
 					System.out.println("1. Adicionar Atividade");
 					System.out.println("2. Alterar Atividade");
@@ -90,17 +97,17 @@ public class MainViagem {
 					case (1): // adicionar atividade
 						System.out.println("Digite a nova atividade:");
 						String novaAtividade = scan.nextLine();
-						dao.inserirAtividade(viagem, novaAtividade);
+						daoAtt.inserirAtividade(viagem, novaAtividade);
 						System.out.println(novaAtividade + " Adicionado com sucesso");
 						break;
 
 					case (2): // alterar atividade
-						System.out.println("Digite o índice da atividade a ser alterada:");
+						System.out.println("Digite o índice da atividade a ser alterada - começa em 0 -:");
 						int indice = Integer.valueOf(scan.nextLine());
 						if (indice >= 0 && indice < dao.listarAtividades().size()) {
 							System.out.println("Digite a nova atividade:");
 							novaAtividade = scan.nextLine();
-							dao.alterarAtividade(viagem, indice, novaAtividade);
+							daoAtt.alterarAtividade(viagem, indice, novaAtividade);
 							System.out.println("alterado com sucesso");
 						} else {
 							System.out.println("Opção inválida");
@@ -111,7 +118,7 @@ public class MainViagem {
 						System.out.println("Digite o índice da atividade a ser excluída:");
 						indice = Integer.valueOf(scan.nextLine());
 						if (indice >= 0 && indice < dao.listarAtividades().size()) {
-							dao.excluirAtividade(viagem, indice);
+							daoAtt.excluirAtividade(viagem, indice);
 						} else {
 							System.out.println("Opção inválida");
 							System.out.println("Deletado com sucesso");
@@ -128,7 +135,17 @@ public class MainViagem {
 				selecionarFormaPagamento(viagem);
 				confirmarViagem(viagem);
 
-			case (2): // VIAGEM PRONTA
+			case(2): // Alterar
+				
+				break;
+			
+			case(3): // Excluir
+				break;
+			
+			case(4): // Listar
+				break;
+			
+			case (5): // VIAGEM PRONTA
 				while (op2 != 0) {
 					Viagem viagemPronta = new Viagem();
 					System.out.println("Sua viagem eh: ");

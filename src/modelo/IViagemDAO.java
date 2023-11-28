@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public interface IViagemDAO {
 
-	public boolean inserir(Viagem viagem);
+	public boolean inserir(Viagem v);
 
-	public boolean excluir(int id);
+	public boolean excluir(Viagem v);
 
-	public boolean alterar(Viagem viagem, int id);
+	public boolean alterar(Viagem v);
 
 	public ArrayList<Viagem> listar();
 
