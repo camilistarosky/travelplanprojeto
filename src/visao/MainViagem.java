@@ -14,7 +14,7 @@ public class MainViagem {
 
 		Passageiro passageiro = new Passageiro();
 		Viagem viagem = new Viagem();
-		
+
 		Scanner scan = new Scanner(System.in);
 		int op = Integer.MAX_VALUE;
 		int op2 = Integer.MAX_VALUE;
@@ -22,10 +22,7 @@ public class MainViagem {
 		while (op != 0) {
 			System.out.println("BEM VINDO AO TRAVELPLAN");
 			System.out.println("1 - Criar Viagem");
-			System.out.println("2 - Alterar Viagem");
-			System.out.println("3 - Excluir Viagem");
-			System.out.println("4 - Listar Viagens");
-			System.out.println("5 - Viagem Pronta");
+			System.out.println("2 - Viagem Pronta");
 			System.out.println("0 - Sair do Programa");
 			op = Integer.valueOf(scan.nextLine());
 
@@ -73,14 +70,12 @@ public class MainViagem {
 				passageiro.setViagem(viagem);
 
 				ViagemDAO dao = ViagemDAO.getInstancia();
-				ArrayList<Viagem> listaviagens = dao.listar();
 				dao.inserir(viagem);
 
 				op2 = -1;
 
 				while (op2 != 0) {
 					ViagemDAO daoAtt = ViagemDAO.getInstanciaA();
-					ArrayList<String> listaatividades = daoAtt.listarAtividades();
 					
 					System.out.println("\nMENU:");
 					System.out.println("1. Adicionar Atividade");
@@ -135,17 +130,7 @@ public class MainViagem {
 				selecionarFormaPagamento(viagem);
 				confirmarViagem(viagem);
 
-			case(2): // Alterar
-				
-				break;
-			
-			case(3): // Excluir
-				break;
-			
-			case(4): // Listar
-				break;
-			
-			case (5): // VIAGEM PRONTA
+			case (2): // VIAGEM PRONTA
 				while (op2 != 0) {
 					Viagem viagemPronta = new Viagem();
 					System.out.println("Sua viagem eh: ");
@@ -604,7 +589,8 @@ public class MainViagem {
 
 	}
 
-	public static void mostrarInformacoesViagem(Passageiro passageiro, Viagem viagem, ArrayList<String> tabelaAtividades) {
+	public static void mostrarInformacoesViagem(Passageiro passageiro, Viagem viagem,
+			ArrayList<String> tabelaAtividades) {
 		System.out.println("Nome: " + passageiro.getNome());
 		System.out.println("Data de Nascimento: " + passageiro.getDataNascimento());
 		System.out.println("CPF: " + passageiro.getCpf());

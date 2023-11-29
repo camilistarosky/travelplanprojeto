@@ -6,12 +6,6 @@ public interface IViagemDAO {
 
 	public boolean inserir(Viagem v);
 
-	public boolean excluir(Viagem v);
-
-	public boolean alterar(Viagem v);
-
-	public ArrayList<Viagem> listar();
-
 	public boolean inserirAtividade(Viagem v, String atividade);
 
 	public boolean excluirAtividade(Viagem v, int indice);

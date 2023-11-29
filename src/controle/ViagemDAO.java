@@ -39,36 +39,6 @@ public class ViagemDAO implements IViagemDAO {
 		return tabelaViagems.add(v);
 	}
 
-	@Override
-	public boolean alterar(Viagem v) {
-		for (int i = 0; i < tabelaViagems.size(); i++) {
-			Viagem viagem = tabelaViagems.get(i);
-			
-			if (viagem.getI() == v.getI()) {
-				tabelaViagems.set(i, viagem);
-				return true;
-			}
-		}
-		
-		return false;
-	}
-
-	@Override
-	public boolean excluir(Viagem v) {
-		for (Viagem Viagem : tabelaViagems) {
-			if (Viagem.getI() == v.getI()) {
-				tabelaViagems.remove(Viagem);
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	@Override
-	public ArrayList<Viagem> listar() {
-		return tabelaViagems;
-	}
 
 	@Override
 	public boolean inserirAtividade(Viagem v, String novaAtividade) {
