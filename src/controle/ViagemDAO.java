@@ -23,15 +23,16 @@ public class ViagemDAO implements IViagemDAO {
 
 		return instancia;
 	}
-	
-	public static ViagemDAO getInstanciaA() {
 
+	public static ViagemDAO getInstanciaA() {
+		// Verifica se a instância ainda não foi criada
 		if (instancia == null) {
-			instancia = new ViagemDAO();
-			tabelaAtividades = new ArrayList<>();
+			instancia = new ViagemDAO(); // Se não existir, cria uma nova instância da classe ViagemDAO
+			tabelaAtividades = new ArrayList<>(); // Inicializa a lista tabelaAtividades como uma nova instância de
+													// ArrayList
 		}
 
-		return instancia;
+		return instancia; // Retorna a instância (seja recém-criada ou já existente)
 	}
 
 	@Override
@@ -39,49 +40,37 @@ public class ViagemDAO implements IViagemDAO {
 		return tabelaViagems.add(v);
 	}
 
-
 	@Override
 	public boolean inserirAtividade(Viagem v, String novaAtividade) {
-		for (Viagem viagem : tabelaViagems) {
-			if (viagem.getI() == v.getI()) {
-				tabelaAtividades.add(novaAtividade);
-				return true;
-			}
-		}
-		return false;
+		tabelaAtividades.add(novaAtividade);
+		return true;
 	}
 
 	@Override
 	public boolean excluirAtividade(Viagem v, int indice) {
-		for (Viagem viagem : tabelaViagems) {
-			if (viagem.getI() == v.getI()) {
-				if (indice >= 0 && indice < tabelaAtividades.size()) {
-					tabelaAtividades.remove(indice);
-					System.out.println("Atividade EXCLUIDA com sucesso!");
-				} else {
-					System.out.println("opção invalida");
-				}
-			}
+		// Verifica se o índice está dentro dos limites da lista de atividades
+		if (indice >= 0 && indice < tabelaAtividades.size()) {
+			tabelaAtividades.remove(indice); // Remove a atividade na posição indicada pelo índice
+			System.out.println("Atividade EXCLUIDA com sucesso!");
+		} else {
+			System.out.println("opção invalida");
 		}
-		return false;
+		return false; // Retorna false, indicando que a operação falhou
 	}
 
 	@Override
 	public boolean alterarAtividade(Viagem v, int indice, String novaAtividade) {
-		for (Viagem viagem : tabelaViagems) {
-			if (viagem.getI() == v.getI()) {
-				if (indice >= 0 && indice < tabelaAtividades.size()) {
-					tabelaAtividades.set(indice, novaAtividade);
-					System.out.println("Atividade ALTERADA com sucesso!");
-				} else {
-					System.out.println("opção invalida");
-				}
-
-			}
+		// Verifica se o índice está dentro dos limites da lista de atividades
+		if (indice >= 0 && indice < tabelaAtividades.size()) {
+			tabelaAtividades.set(indice, novaAtividade); // Altera a atividade na posição indicada pelo índice para a
+															// nova atividade fornecida
+			System.out.println("Atividade ALTERADA com sucesso!");
+		} else {
+			System.out.println("opção invalida");
 		}
-		return false;
+		return true;
 	}
-	
+
 	public ArrayList<String> listarAtividades() {
 		return tabelaAtividades;
 	}

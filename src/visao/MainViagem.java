@@ -69,8 +69,9 @@ public class MainViagem {
 
 				passageiro.setViagem(viagem);
 
+				// instância única da classe ViagemDAO usando o padrão Singleton
 				ViagemDAO dao = ViagemDAO.getInstancia();
-				dao.inserir(viagem);
+				dao.inserir(viagem); // Insere a viagem no sistema utilizando a instância do ViagemDAO
 
 				op2 = -1;
 
